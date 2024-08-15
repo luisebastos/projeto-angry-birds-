@@ -6,17 +6,32 @@ pygame.init()
 
 #a função cria pokemons no dict assets, cria a tela, muda o ícone e o nome da janela. No dict 'state', tem todas as informações que o jogo vai utilizar, como as caixas, quantidade das bolinhas, a física do jogo, etc. O dict 'pokemon' guarda cada pokemon numa caixa e suas respectivas posições. A função também cria as bolinhas.
 def inicializa():
-
+    
     assets = {
-        # adicionar personagens de angry birds
+        'brock' : pygame.image.load("docs/imagens/personagem.png"), 
+        'caixa' : pygame.image.load("docs/imagens/caixa angry birds.png"),
+        'estilingue' : pygame.image.load("docs/imagens/estilingue.png"),
+        'bulbasaur' : pygame.image.load("docs/imagens/planta dino.png"), 
+        'clefairy' : pygame.image.load("docs/imagens/clefairy.png"),
+        'estrelinha' : pygame.image.load("docs/imagens/estrelinha.png"),
+        'eevee' : pygame.image.load("docs/imagens/leaozinho.png"), 
+        'pikachu' : pygame.image.load("docs/imagens/pikachu.png"), 
+        'mimikyu' : pygame.image.load("docs/imagens/mimikyu.png"),
+        'pokebola' : pygame.image.load("docs/imagens/pokebola.png"),
+        'exclamação' : pygame.image.load("docs/imagens/exclamação.png"),
+        'snorlax' : pygame.image.load("docs/imagens/snorlax.png"),
+        'fofopreto' : pygame.image.load("docs/imagens/cachorro].png"),
+        'rosinha' : pygame.image.load("docs/imagens/meufav.png"),
+        'rato' : pygame.image.load("docs/imagens/sato.png"),
+        'enfeite1' : pygame.image.load("docs\imagens\enfeite1.png")
     }
 
-    pygame.display.set_caption('Angry Birds')
+    pygame.display.set_caption('PokeSlingshot')
     pygame.display.set_icon(pygame.image.load("docs/imagens/icone.png"))
     window = pygame.display.set_mode((1000, 450), vsync=True, flags=pygame.SCALED)
-    pygame.mixer.music.load("docs/musica/sound.mp3") # musica  
+    pygame.mixer.music.load("docs/musica/sound.mp3")
     pygame.mixer.music.play() 
-    state = { # posicção dos elementos
+    state = {
         'teta' : 0,
         'vel_x' : 0,
         'vel_y' : 0,
@@ -33,7 +48,7 @@ def inicializa():
     }
 
 
-    pokemon = { # porcos inimigos dos angry birds / caixas para acertar  
+    pokemon = {
                    # caixa       #pokemon
         'rato' : [(310, 285), [319, 295]], 
         'fofopreto' : [(520, 285), [528,295]], 
@@ -108,9 +123,13 @@ def desenha(window, assets, state):
         window.blit(assets['enfeite1'], (85, 40))
         window.blit(assets['enfeite1'], (95, 70))
 
-         
+        #desenha a barra de força e a mira
+        vermelho = pygame.draw.rect(window, (255,0,0), (14.3, 16, 25, 114.7))
+        amarelo = pygame.draw.rect(window, (255,255,0), (14.3, 130, 25, 67.1))
+        verde = pygame.draw.rect(window, (0, 128,0), (14.3, 180, 25, 45.7))
+        mira = pygame.draw.rect(window, (0,0,0), (17,state['pos_y_mira'], 40,4))  
         
-        #desenha o texto da quantidade de angry birds para serem lançadas 
+        #desenha o texto da quantidade de pokebolas para serem lançadas 
         fonte = pygame.font.SysFont('Arial', 20, bold=True)
         texto = fonte.render(str(state['texto_bolinhas']), True, (0,0,0))
         texto_x = 110
@@ -120,6 +139,12 @@ def desenha(window, assets, state):
 
         for i in state['caixas']:
             window.blit(assets['caixa'], (i))
+
+    elif state['tela'] == 4:
+        window.blit(pygame.image.load("docs\imagens\gameover.png"), (0,0))
+
+    elif state['tela'] == 5:
+        window.blit(pygame.image.load("docs\imagens\parabens.png"), (0,0)) 
 
     pygame.display.update()
 
