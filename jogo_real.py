@@ -29,7 +29,6 @@ class game:
     def tela_inicial(self): 
         while not self.jogo_iniciado: 
             self.screen.blit(self.assets['tela_inicial'], (0, 0))
-            font = pygame.font.SysFont(None, 55)
             pygame.display.update()
 
             for event in pygame.event.get():
