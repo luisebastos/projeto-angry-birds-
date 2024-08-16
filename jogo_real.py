@@ -16,26 +16,28 @@ class game:
         self.WHITE = (255, 255, 255)
         
         self.assets = {
-            'angry_birds': pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (55, 77))
+            'tela_inicial': pygame.transform.scale(pygame.image.load('assets/menu.png'), (width, height)), 
+            'angry_birds_amarelo': pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (55, 77))
         }
                 
         posicao_inicial = (width // 2, height // 2)  # Posição inicial do personagem no centro da tela
-        self.personagem = Personagem(self.assets['angry_birds'], posicao_inicial)
+        self.personagem = Personagem(self.assets['angry_birds_amarelo'], posicao_inicial)
+        self.clicar_iniciar_jogo = pygame.Rect(150, height - 150, 120, 120)
+        self.clicar_instrucoes_jogo = pygame.Rect(650, height - 150, 120, 120) #CRIAR TELA DE INSTRUCOES PARA IMPLEMENTAR ISSO
         
     def tela_inicial(self): 
         while not self.jogo_iniciado: 
-            self.screen.fill(self.BLACK)
+            self.screen.blit(self.assets['tela_inicial'], (0, 0))
             font = pygame.font.SysFont(None, 55)
-            texto = font.render("Pressione qualquer tecla para começar", True, self.WHITE)
-            self.screen.blit(texto, (self.screen.get_width() // 2 - texto.get_width() // 2, self.screen.get_height() // 2))
             pygame.display.update()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.rodando = False
                     self.jogo_iniciado = True  # Para sair do loop
-                if event.type == pygame.KEYDOWN:
-                    self.jogo_iniciado = True
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if self.clicar_iniciar_jogo.collidepoint(event.pos):
+                        self.jogo_iniciado = True
         
     # Processa eventos do jogo
     def processar_eventos(self):
