@@ -3,7 +3,7 @@ from class_personagem import *
 
 class game:
     # Inicializa o jogo
-    def __init__(self, width=800, height=450):
+    def __init__(self, width=900, height=500):
         pygame.init()
         pygame.display.set_caption('Angry Birds')
         
