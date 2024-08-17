@@ -18,7 +18,7 @@ class game:
         self.assets = {
             'tela_inicial': pygame.transform.scale(pygame.image.load('assets/menu.png'), (width, height)), 
             'tela_jogo': pygame.transform.scale(pygame.image.load('assets/jogo_inicio.png'), (width, height)),
-            'tela_instrucoes': pygame.transform.scale(pygame.image.load('assets/INSTRUÇÕES.png'), (width, height)),
+            'tela_instrucoes': pygame.transform.scale(pygame.image.load('assets/instrucoes.png'), (width, height)),
             'angry_birds_amarelo': pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (55, 77))
         }
                 
