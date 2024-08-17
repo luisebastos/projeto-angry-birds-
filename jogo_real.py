@@ -26,12 +26,12 @@ class Game:
             'angry_birds_preto': pygame.transform.scale(pygame.image.load('assets/preto_angry.png'), (55, 77)),
             'angry_birds_branco': pygame.transform.scale(pygame.image.load('assets/branco_angry.png'), (55, 77)),
             'boo': pygame.transform.scale(pygame.image.load('assets/boo.png'), (75, 80)),
-            'olaf': pygame.transform.scale(pygame.image.load('assets/olaf.png'), (70, 80)),
+            'olaf': pygame.transform.scale(pygame.image.load('assets/olaf.png'), (60, 75)),
             'moana': pygame.transform.scale(pygame.image.load('assets/moana.png'), (80, 85)),
-            'merida': pygame.transform.scale(pygame.image.load('assets/merida.png'), (80, 90)),
-            'pooh': pygame.transform.scale(pygame.image.load('assets/pooh.png'), (75, 70)),
+            'dumbo': pygame.transform.scale(pygame.image.load('assets/dumbo.png'), (65, 65)),
+            'pooh': pygame.transform.scale(pygame.image.load('assets/pooh.png'), (65, 65)),
             'stitch': pygame.transform.scale(pygame.image.load('assets/stitch.png'), (75, 80)),
-            'caixa': pygame.transform.scale(pygame.image.load('assets/caixa angry birds.png'), (75, 80)),
+            'caixa': pygame.transform.scale(pygame.image.load('assets/caixa angry birds.png'), (85, 85)),
             'fantasma': pygame.transform.scale(pygame.image.load('assets/fantasma.png'), (75, 80)),
         }
 
@@ -42,12 +42,12 @@ class Game:
         posicao_inicial = (width // 2, height // 2)  # Posição inicial do personagem no centro da tela
         self.personagem = Personagem(self.assets['angry_birds_amarelo'], posicao_inicial)
         self.personagens_adicionais = [
-            Personagem(self.assets['boo'], (800, 350)),
-            Personagem(self.assets['olaf'], (750, 350)),
-            Personagem(self.assets['merida'], (300, 200)),
-            Personagem(self.assets['moana'], (400, 250)),
-            Personagem(self.assets['stitch'], (500, 300)),
-            Personagem(self.assets['pooh'], (600, 350)),
+            Personagem(self.assets['boo'], (670, 190)),
+            Personagem(self.assets['olaf'], (570, 350)),
+            Personagem(self.assets['dumbo'], (670, 350)),
+            Personagem(self.assets['moana'], (720, 270)),
+            Personagem(self.assets['stitch'], (770, 350)),
+            Personagem(self.assets['pooh'], (620, 270)),
         ]
 
         self.fantasma = Fantasma(self.assets['fantasma'], (100, 100))
@@ -58,7 +58,7 @@ class Game:
         self.clicar_back_instrucoes = pygame.Rect(100, height - 150, 120, 120)
 
 
-        posicoes_caixas = [(300, 450), (400, 450), (500, 450), (600, 450), (700, 460)]
+        posicoes_caixas = [(570, 350), (670, 350), (770, 350), (620, 270), (720, 270), (670, 190)]
         self.caixas = [Caixas(self.assets['caixa'], pos) for pos in posicoes_caixas]
         
     def tela_inicial(self): 
