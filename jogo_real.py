@@ -1,8 +1,7 @@
 import pygame
 from class_personagem import *
 
-class game:
-    # Inicializa o jogo
+class Game:
     def __init__(self, width=900, height=500):
         pygame.init()
         pygame.display.set_caption('Angry Birds')
@@ -11,9 +10,7 @@ class game:
         self.BLACK = (0, 0, 0)
         
         self.rodando = True
-        self.jogo_iniciado = False
-        self.BLACK = (0, 0, 0)
-        self.WHITE = (255, 255, 255)
+        self.estado = 'inicial'  
         
         self.assets = {
             'tela_inicial': pygame.transform.scale(pygame.image.load('assets/menu.png'), (width, height)), 
@@ -25,49 +22,72 @@ class game:
         posicao_inicial = (width // 2, height // 2)  # Posição inicial do personagem no centro da tela
         self.personagem = Personagem(self.assets['angry_birds_amarelo'], posicao_inicial)
         self.clicar_iniciar_jogo = pygame.Rect(150, height - 150, 120, 120)
-        self.clicar_instrucoes_jogo = pygame.Rect(650, height - 150, 120, 120) #CRIAR TELA DE INSTRUCOES PARA IMPLEMENTAR ISSO
+        self.clicar_instrucoes_jogo = pygame.Rect(550, height - 150, 150, 150) # Área clicável para instruções
+        self.clicar_back_instrucoes = pygame.Rect(100, height - 150, 120, 120)
         
     def tela_inicial(self): 
-        while not self.jogo_iniciado: 
+        while self.estado == 'inicial': 
             self.screen.blit(self.assets['tela_inicial'], (0, 0))
             pygame.display.update()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.rodando = False
-                    self.jogo_iniciado = True  # Para sair do loop
+                    self.estado = 'sair'
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if self.clicar_iniciar_jogo.collidepoint(event.pos):
-                        self.jogo_iniciado = True
-        
+                        self.estado = 'jogo'
+                    elif self.clicar_instrucoes_jogo.collidepoint(event.pos):
+                        self.estado = 'instrucoes'
+    
+    
+    def tela_instrucoes(self):
+        while self.estado == 'instrucoes':
+            self.screen.blit(self.assets['tela_instrucoes'], (0, 0))
+            pygame.display.update()
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.rodando = False
+                    self.estado = 'sair'
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if self.clicar_back_instrucoes.collidepoint(event.pos):  # Verifica se o botão esquerdo do mouse foi clicado
+                        self.estado = 'inicial'
+    
+    
     # Processa eventos do jogo
     def processar_eventos(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.rodando = False
+            # Adicione outras verificações de eventos se necessário
 
-    # Desenha na tela
+
+    # Desenha na tela do jogo
     def desenhar(self):
         self.screen.blit(self.assets['tela_jogo'], (0, 0))
         self.personagem.desenhar_personagem(self.screen)  # Desenha o personagem na tela
         pygame.display.update()
 
-    def desenhar_instrucoes(self):
-        self.screen.blit(self.assets['tela_instrucoes'], (0, 0))
-        pygame.display.update()
 
     # Loop principal do jogo
     def rodar(self):
-        self.tela_inicial()
         while self.rodando:
-            self.processar_eventos()
-            self.desenhar()
+            if self.estado == 'inicial':
+                self.tela_inicial()
+            elif self.estado == 'instrucoes':
+                self.tela_instrucoes()
+            elif self.estado == 'jogo':
+                self.processar_eventos()
+                self.desenhar()
         
         pygame.quit()
 
+
 if __name__ == "__main__":
-    jogo = game()
+    jogo = Game()
     jogo.rodar()
+
 
 
 
