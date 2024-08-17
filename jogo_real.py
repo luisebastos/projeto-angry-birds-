@@ -50,7 +50,7 @@ class Game:
             Personagem(self.assets['pooh'], (620, 270)),
         ]
 
-        self.fantasma = Fantasma(self.assets['fantasma'], (100, 100))
+        self.fantasma = Fantasma(self.assets['fantasma'], (400, 100))
         self.fantasma2 = Fantasma(self.assets['fantasma'], (200, 200))
         
         self.clicar_iniciar_jogo = pygame.Rect(150, height - 150, 120, 120)
