@@ -51,26 +51,28 @@ class Game:
                     self.rodando = False
                     self.estado = 'sair'
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if self.clicar_back_instrucoes.collidepoint(event.pos):  # Verifica se o botão esquerdo do mouse foi clicado
+                    if self.clicar_back_instrucoes.collidepoint(event.pos):
                         self.estado = 'inicial'
     
     
-    # Processa eventos do jogo
     def processar_eventos(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.rodando = False
-            # Adicione outras verificações de eventos se necessário
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if self.personagem.rect.collidepoint(event.pos):
+                    self.personagem.selecionado = True
+            elif event.type == pygame.MOUSEBUTTONUP:
+                self.personagem.selecionado = False
 
 
-    # Desenha na tela do jogo
     def desenhar(self):
         self.screen.blit(self.assets['tela_jogo'], (0, 0))
+        self.personagem.atualizar()  # Atualiza a posição do personagem
         self.personagem.desenhar_personagem(self.screen)  # Desenha o personagem na tela
         pygame.display.update()
 
 
-    # Loop principal do jogo
     def rodar(self):
         while self.rodando:
             if self.estado == 'inicial':
@@ -87,7 +89,3 @@ class Game:
 if __name__ == "__main__":
     jogo = Game()
     jogo.rodar()
-
-
-
-
