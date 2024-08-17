@@ -12,3 +12,6 @@ class Personagem:
     def atualizar(self):
         if self.selecionado:
             self.rect.center = pygame.mouse.get_pos()
+
+
+    

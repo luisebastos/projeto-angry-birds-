@@ -1,6 +1,8 @@
 import pygame
 from class_personagem import *
 from class_fantasma import *
+from class_caixas import *
+
 
 class Game:
     def __init__(self, width=900, height=500):
@@ -23,21 +25,41 @@ class Game:
             'angry_birds_rosa': pygame.transform.scale(pygame.image.load('assets/rosa_angry.png'), (55, 77)),
             'angry_birds_preto': pygame.transform.scale(pygame.image.load('assets/preto_angry.png'), (55, 77)),
             'angry_birds_branco': pygame.transform.scale(pygame.image.load('assets/branco_angry.png'), (55, 77)),
-            'boo': pygame.transform.scale(pygame.image.load('assets/boo.png'), (55, 77)),
-            'olaf': pygame.transform.scale(pygame.image.load('assets/olaf.png'), (55, 77)),
-            'moana': pygame.transform.scale(pygame.image.load('assets/moana.png'), (55, 77)),
-            'merida': pygame.transform.scale(pygame.image.load('assets/merida.png'), (55, 77)),
-            'pooh': pygame.transform.scale(pygame.image.load('assets/pooh.png'), (55, 77)),
-            'stitch': pygame.transform.scale(pygame.image.load('assets/stitch.png'), (55, 77)),
-            'caixa': pygame.transform.scale(pygame.image.load('assets/caixa angry birds.png'), (55, 77)),
-            'fantasma': pygame.transform.scale(pygame.image.load('assets/fantasma.png'), (55, 77)),
+            'boo': pygame.transform.scale(pygame.image.load('assets/boo.png'), (75, 80)),
+            'olaf': pygame.transform.scale(pygame.image.load('assets/olaf.png'), (70, 80)),
+            'moana': pygame.transform.scale(pygame.image.load('assets/moana.png'), (80, 85)),
+            'merida': pygame.transform.scale(pygame.image.load('assets/merida.png'), (80, 90)),
+            'pooh': pygame.transform.scale(pygame.image.load('assets/pooh.png'), (75, 70)),
+            'stitch': pygame.transform.scale(pygame.image.load('assets/stitch.png'), (75, 80)),
+            'caixa': pygame.transform.scale(pygame.image.load('assets/caixa angry birds.png'), (75, 80)),
+            'fantasma': pygame.transform.scale(pygame.image.load('assets/fantasma.png'), (75, 80)),
         }
+
+        # adicionando musica 
+        pygame.mixer.music.load('musica/som.mp3')
+        pygame.mixer.music.play() 
                 
         posicao_inicial = (width // 2, height // 2)  # Posição inicial do personagem no centro da tela
         self.personagem = Personagem(self.assets['angry_birds_amarelo'], posicao_inicial)
+        self.personagens_adicionais = [
+            Personagem(self.assets['boo'], (800, 350)),
+            Personagem(self.assets['olaf'], (750, 350)),
+            Personagem(self.assets['merida'], (300, 200)),
+            Personagem(self.assets['moana'], (400, 250)),
+            Personagem(self.assets['stitch'], (500, 300)),
+            Personagem(self.assets['pooh'], (600, 350)),
+        ]
+
+        self.fantasma = Fantasma(self.assets['fantasma'], (100, 100))
+        self.fantasma2 = Fantasma(self.assets['fantasma'], (200, 200))
+        
         self.clicar_iniciar_jogo = pygame.Rect(150, height - 150, 120, 120)
         self.clicar_instrucoes_jogo = pygame.Rect(550, height - 150, 150, 150) # Área clicável para instruções
         self.clicar_back_instrucoes = pygame.Rect(100, height - 150, 120, 120)
+
+
+        posicoes_caixas = [(300, 450), (400, 450), (500, 450), (600, 450), (700, 460)]
+        self.caixas = [Caixas(self.assets['caixa'], pos) for pos in posicoes_caixas]
         
     def tela_inicial(self): 
         while self.estado == 'inicial': 
@@ -78,12 +100,25 @@ class Game:
                     self.personagem.selecionado = True
             elif event.type == pygame.MOUSEBUTTONUP:
                 self.personagem.selecionado = False
+        
+        for caixa in self.caixas:
+            caixa.colisao_caixa(self.personagem.rect)
 
 
     def desenhar(self):
         self.screen.blit(self.assets['tela_jogo'], (0, 0))
         self.personagem.atualizar()  # Atualiza a posição do personagem
         self.personagem.desenhar_personagem(self.screen)  # Desenha o personagem na tela
+
+        for personagem in self.personagens_adicionais: # personagens da disney
+            personagem.desenhar_personagem(self.screen)
+        
+        self.fantasma.desenhar(self.screen) # obstaculo
+        self.fantasma2.desenhar(self.screen) 
+
+        for caixa in self.caixas: # CAIXAS
+            caixa.desenhar(self.screen)
+
         pygame.display.update()
 
 
