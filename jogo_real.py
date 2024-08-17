@@ -1,5 +1,6 @@
 import pygame
 from class_personagem import *
+from class_fantasma import *
 
 class Game:
     def __init__(self, width=900, height=500):
@@ -16,7 +17,20 @@ class Game:
             'tela_inicial': pygame.transform.scale(pygame.image.load('assets/menu.png'), (width, height)), 
             'tela_jogo': pygame.transform.scale(pygame.image.load('assets/jogo_inicio.png'), (width, height)),
             'tela_instrucoes': pygame.transform.scale(pygame.image.load('assets/instrucoes.png'), (width, height)),
-            'angry_birds_amarelo': pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (55, 77))
+            'angry_birds_amarelo': pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (55, 77)),
+            'angry_birds_vermelho': pygame.transform.scale(pygame.image.load('assets/vermelho_angry.png'), (55, 77)),
+            'angry_birds_azul': pygame.transform.scale(pygame.image.load('assets/azul_angry.png'), (55, 77)),
+            'angry_birds_rosa': pygame.transform.scale(pygame.image.load('assets/rosa_angry.png'), (55, 77)),
+            'angry_birds_preto': pygame.transform.scale(pygame.image.load('assets/preto_angry.png'), (55, 77)),
+            'angry_birds_branco': pygame.transform.scale(pygame.image.load('assets/branco_angry.png'), (55, 77)),
+            'boo': pygame.transform.scale(pygame.image.load('assets/boo.png'), (55, 77)),
+            'olaf': pygame.transform.scale(pygame.image.load('assets/olaf.png'), (55, 77)),
+            'moana': pygame.transform.scale(pygame.image.load('assets/moana.png'), (55, 77)),
+            'merida': pygame.transform.scale(pygame.image.load('assets/merida.png'), (55, 77)),
+            'pooh': pygame.transform.scale(pygame.image.load('assets/pooh.png'), (55, 77)),
+            'stitch': pygame.transform.scale(pygame.image.load('assets/stitch.png'), (55, 77)),
+            'caixa': pygame.transform.scale(pygame.image.load('assets/caixa angry birds.png'), (55, 77)),
+            'fantasma': pygame.transform.scale(pygame.image.load('assets/fantasma.png'), (55, 77)),
         }
                 
         posicao_inicial = (width // 2, height // 2)  # Posição inicial do personagem no centro da tela
