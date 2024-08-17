@@ -18,7 +18,7 @@ class game:
         self.assets = {
             'tela_inicial': pygame.transform.scale(pygame.image.load('assets/menu.png'), (width, height)), 
             'tela_jogo': pygame.transform.scale(pygame.image.load('assets/jogo_inicio.png'), (width, height)),
-            'tela_instrucoes': pygame.transform.scale(pygame.image.load('assets/instrucoes.png'), (width, height)),
+            'tela_instrucoes': pygame.transform.scale(pygame.image.load('assets/INSTRUÇÕES.png'), (width, height)),
             'angry_birds_amarelo': pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (55, 77))
         }
                 
@@ -49,7 +49,7 @@ class game:
     # Desenha na tela
     def desenhar(self):
         self.screen.blit(self.assets['tela_jogo'], (0, 0))
-        self.personagem.desenhar_personagem(self.screen)  # Desenha o personagem na telad
+        self.personagem.desenhar_personagem(self.screen)  # Desenha o personagem na tela
         pygame.display.update()
 
     def desenhar_instrucoes(self):
