@@ -5,13 +5,16 @@ class Personagem:
         self.image = imagem
         self.rect = self.image.get_rect(center=posicao_inicial)
         self.selecionado = False
-    
+        self.visivel = True 
+        
     def desenhar_personagem(self, tela):
-        tela.blit(self.image, self.rect.topleft)
+        if self.visivel:  
+            tela.blit(self.image, self.rect.topleft)
 
     def atualizar(self):
-        if self.selecionado:
+        if self.selecionado and self.visivel: 
             self.rect.center = pygame.mouse.get_pos()
 
-
-    
+    def colisao_personagem(self, outro_rect):
+        if self.visivel and self.rect.colliderect(outro_rect):
+            self.visivel = False 

@@ -104,6 +104,9 @@ class Game:
         for caixa in self.caixas:
             caixa.colisao_caixa(self.personagem.rect)
 
+        for personagem in self.personagens_adicionais:
+            personagem.colisao_personagem(self.personagem.rect)
+
 
     def desenhar(self):
         self.screen.blit(self.assets['tela_jogo'], (0, 0))
