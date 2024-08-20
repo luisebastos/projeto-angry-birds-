@@ -6,6 +6,7 @@ class Personagem:
         self.rect = self.image.get_rect(center=posicao_inicial)
         self.selecionado = False
         self.visivel = True 
+        self.posicao_fora = [0, 0]  
         
     def desenhar_personagem(self, tela):
         if self.visivel:  
@@ -17,4 +18,5 @@ class Personagem:
 
     def colisao_personagem(self, outro_rect):
         if self.visivel and self.rect.colliderect(outro_rect):
-            self.visivel = False 
+            self.rect.topleft = tuple(self.posicao_fora)
+
