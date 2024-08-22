@@ -39,7 +39,7 @@ class Game:
         pygame.mixer.music.load('musica/som.mp3')
         pygame.mixer.music.play() 
                 
-        posicao_inicial = (width // 2, height // 2)  # Posição inicial do personagem no centro da tela
+        posicao_inicial = (50, 400)  # Posição inicial do personagem no centro da tela
         self.personagem = Personagem(self.assets['angry_birds_amarelo'], posicao_inicial)
         self.personagens_adicionais = [
             Personagem(self.assets['boo'], (670, 190)),
@@ -57,9 +57,9 @@ class Game:
         self.clicar_instrucoes_jogo = pygame.Rect(550, height - 150, 150, 150) # Área clicável para instruções
         self.clicar_back_instrucoes = pygame.Rect(100, height - 150, 120, 120)
 
-
         posicoes_caixas = [(570, 350), (670, 350), (770, 350), (620, 270), (720, 270), (670, 190)]
         self.caixas = [Caixas(self.assets['caixa'], pos) for pos in posicoes_caixas]
+        
         
     def tela_inicial(self): 
         while self.estado == 'inicial': 
