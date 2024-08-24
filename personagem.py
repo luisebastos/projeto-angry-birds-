@@ -36,6 +36,10 @@ class Personagem():
             if self.pos not in self.s0: 
                 self.v = self.v + self.gravidade
             self.pos += self.v * dt * 2
+        screen_width, screen_height = 900, 500  
+        if (self.pos[0] < 0 or self.pos[0] > screen_width or
+            self.pos[1] < 0 or self.pos[1] > screen_height):
+            self.reset_pos()
 
 
     def draw(self, screen):
