@@ -7,9 +7,9 @@ class Colisao():
         self.caixas = [self.caixa.get_rect(topleft = pos) for pos in self.posicoes]
         self.personagens = [
             {'imagem': pygame.transform.scale(pygame.image.load('assets/olaf.png'), (60, 70)), 'pos': (580, 300)},
-            {'imagem': pygame.transform.scale(pygame.image.load('assets/dumbo.png'), (60, 70)), 'pos': (680, 300)},
+            {'imagem': pygame.transform.scale(pygame.image.load('assets/dumbo.png'), (55, 60)), 'pos': (690, 310)},
             {'imagem': pygame.transform.scale(pygame.image.load('assets/stitch.png'), (60, 70)), 'pos': (780, 310)},
-            {'imagem': pygame.transform.scale(pygame.image.load('assets/pooh.png'), (60, 65)), 'pos': (630, 230)},
+            {'imagem': pygame.transform.scale(pygame.image.load('assets/pooh.png'), (50, 55)), 'pos': (635, 235)},
             {'imagem': pygame.transform.scale(pygame.image.load('assets/moana_pig.png'), (60, 70)), 'pos': (740, 225)},
             {'imagem': pygame.transform.scale(pygame.image.load('assets/boo.png'), (60, 70)), 'pos': (680, 150)}
         ]

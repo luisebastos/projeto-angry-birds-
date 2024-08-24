@@ -3,11 +3,11 @@ import numpy as np
 
 class Personagem():
     def __init__(self):
-        self.angry_bird = [pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (55, 77)),
-            pygame.transform.scale(pygame.image.load('assets/azul_angry.png'), (60, 77)),
+        self.angry_bird = [pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (45, 65)),
+            pygame.transform.scale(pygame.image.load('assets/azul_angry.png'), (60, 70)),
             pygame.transform.scale(pygame.image.load('assets/branco_angry.png'), (55, 77)),
             pygame.transform.scale(pygame.image.load('assets/preto_angry.png'), (55, 77)),
-            pygame.transform.scale(pygame.image.load('assets/rosa_angry.png'), (60, 70)),
+            pygame.transform.scale(pygame.image.load('assets/rosa_angry.png'), (65, 70)),
             pygame.transform.scale(pygame.image.load('assets/vermelho_angry.png'), (45, 60)),]
         self.angry_atual_index = 0 
 
