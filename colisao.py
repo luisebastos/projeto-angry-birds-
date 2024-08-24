@@ -29,7 +29,9 @@ class Colisao():
                 self.caixas.pop(i)
                 self.personagem_rects.pop(i)
                 self.personagens.pop(i)
-                
+                return True  
+        return False  
+                    
                 
  
  

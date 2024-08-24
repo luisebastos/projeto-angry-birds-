@@ -43,7 +43,10 @@ class Personagem():
         if self.dragging and self.initial_pos is not None:
             pygame.draw.line(screen, (255, 0, 0), self.initial_pos, pygame.mouse.get_pos(), 5)
         
-        
+    
+    def reset_pos(self):
+        self.pos = self.s0.copy()
+        self.v = np.array([0, 0], dtype=float)
             
     
         

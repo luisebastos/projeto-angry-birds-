@@ -42,11 +42,12 @@ class Game:
                 self.personagem.handle_event(event)
 
 
-    def _update(self, dt):
+    def _update(self, dt):       
         if self.telas.estado_atual == "jogo":
             self.fantasma.atualiza_aceleracao(self.personagem)
             self.personagem.update(dt)
-            self.colisao.verificar_colisao(self.personagem.imagem.get_rect(topleft=self.personagem.pos))
+            if self.colisao.verificar_colisao(self.personagem.imagem.get_rect(topleft=self.personagem.pos)):
+                self.personagem.reset_pos()  
 
 
     def _draw(self):
