@@ -53,7 +53,6 @@ class Game:
             if self.telas.estado_atual == "jogo":
                 self.personagem.handle_event(event)
 
-
     def _update(self, dt):       
         if self.telas.estado_atual == "jogo":
             self.fantasma1.atualiza_aceleracao(self.personagem)

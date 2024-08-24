@@ -9,6 +9,7 @@ class Telas:
         self.tela_jogo = pygame.transform.scale(pygame.image.load('assets/jogo_inicio.png'), (width, height))
         self.botao_jogar = pygame.Rect(150, height - 150, 120, 120)
         self.botao_instrucoes = pygame.Rect(550, height - 150, 150, 150)
+        self.botao_jogar_novamente = pygame.Rect(315, height - 150, 120, 120)
         self.clicar_back_instrucoes = pygame.Rect(100, height - 150, 120, 120)
         self.estado_atual = "inicio"
         
@@ -23,6 +24,10 @@ class Telas:
             elif self.estado_atual == "instrucao":
                 if self.clicar_back_instrucoes.collidepoint(event.pos): 
                     self.estado_atual = "inicio"
+            elif self.estado_atual == "venceu":
+                if self.botao_jogar_novamente.collidepoint(event.pos): 
+                    self.estado_atual = "jogo"
+            
 
 
     def draw(self, window): 
