@@ -18,8 +18,12 @@ class Game:
         self.fantasma2 = Fantasma([200, 150])
         self.colisao = Colisao()
         self.telas = Telas(width, height)
+
         self.personagens_coletados = 0 
         self.personagens_totais = 6
+
+        self.tentativas = 0 
+
 
     def iniciar_musica(self):
         pygame.mixer.music.load('musica/som.mp3')
@@ -38,7 +42,7 @@ class Game:
             self.telas.estado_atual = "venceu"
     
     def verifica_perda(self):
-        if self.tentativas_restantes <= 0:
+        if self.tentativas > 6:
             self.telas.estado_atual = "gameover"
 
     def _handle_events(self):
@@ -56,9 +60,12 @@ class Game:
             self.fantasma2.atualiza_aceleracao(self.personagem)
             self.personagem.update(dt)
             if self.colisao.verificar_colisao(self.personagem.imagem.get_rect(topleft=self.personagem.pos)):
-                self.personagem.reset_pos()
                 self.personagens_coletados += 1
                 self.verifica_vitoria()
+                self.personagem.trocabird()
+                self.tentativas += 1
+                self.verifica_perda()
+
     def _draw(self):
         self.screen.fill((255, 255, 255))
         self.telas.draw(self.screen) 

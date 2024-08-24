@@ -3,9 +3,17 @@ import numpy as np
 
 class Personagem():
     def __init__(self):
+        self.angry_bird = [pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (55, 77)),
+            pygame.transform.scale(pygame.image.load('assets/azul_angry.png'), (55, 77)),
+            pygame.transform.scale(pygame.image.load('assets/branco_angry.png'), (55, 77)),
+            pygame.transform.scale(pygame.image.load('assets/preto_angry.png'), (55, 77)),
+            pygame.transform.scale(pygame.image.load('assets/rosa_angry.png'), (60, 77)),
+            pygame.transform.scale(pygame.image.load('assets/vermelho_angry.png'), (55, 77)),]
+        self.angry_atual_index = 0 
+
         self.s0 = np.array([50, 370], dtype=float)
         self.pos = self.s0.copy()
-        self.imagem = pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (55, 77))
+        self.imagem = self.angry_bird[self.angry_atual_index]
         self.v = np.array([0, 0], dtype=float)
         self.dragging = False
         self.initial_pos = None
@@ -40,7 +48,14 @@ class Personagem():
         screen_width, screen_height = 900, 500  
         if (self.pos[0] + personagem_width < 0 or self.pos[0] > screen_width or
             self.pos[1] + personagem_height< 0 or self.pos[1] > screen_height):
-            self.reset_pos()
+            self.trocabird()
+    
+    def trocabird(self):
+        self.angry_atual_index += 1
+        if self.angry_atual_index >= len(self.angry_bird):
+            self.angry_atual_index = 0
+        self.imagem = self.angry_bird[self.angry_atual_index]
+        self.reset_pos()
 
 
     def draw(self, screen):
