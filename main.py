@@ -14,16 +14,17 @@ class Game:
         self.clock = pygame.time.Clock()
         self.running = True
         self.personagem = Personagem()
-        self.fantasma = Fantasma()
+        self.fantasma1 = Fantasma([350, 100])
+        self.fantasma2 = Fantasma([200, 150])
         self.colisao = Colisao()
         self.telas = Telas(width, height)
-        
-        
+        self.personagens_coletados = 0 
+        self.personagens_totais = 6
+
     def iniciar_musica(self):
         pygame.mixer.music.load('musica/som.mp3')
         pygame.mixer.music.play(-1)
         
-
     def run(self):
         self.iniciar_musica()
         while self.running:
@@ -32,6 +33,13 @@ class Game:
             self._update(dt)
             self._draw()
             
+    def verifica_vitoria(self):
+        if self.personagens_coletados == self.personagens_totais:
+            self.telas.estado_atual = "venceu"
+    
+    def verifica_perda(self):
+        if self.tentativas_restantes <= 0:
+            self.telas.estado_atual = "gameover"
 
     def _handle_events(self):
         for event in pygame.event.get():
@@ -44,19 +52,21 @@ class Game:
 
     def _update(self, dt):       
         if self.telas.estado_atual == "jogo":
-            self.fantasma.atualiza_aceleracao(self.personagem)
+            self.fantasma1.atualiza_aceleracao(self.personagem)
+            self.fantasma2.atualiza_aceleracao(self.personagem)
             self.personagem.update(dt)
             if self.colisao.verificar_colisao(self.personagem.imagem.get_rect(topleft=self.personagem.pos)):
-                self.personagem.reset_pos()  
-
-
+                self.personagem.reset_pos()
+                self.personagens_coletados += 1
+                self.verifica_vitoria()
     def _draw(self):
         self.screen.fill((255, 255, 255))
         self.telas.draw(self.screen) 
         if self.telas.estado_atual == "jogo":
             self.personagem.draw(self.screen)
             self.colisao.desenhar(self.screen)
-            self.fantasma.desenha_corpo(self.screen)
+            self.fantasma1.desenha_corpo(self.screen)
+            self.fantasma2.desenha_corpo(self.screen)
         pygame.display.flip()
 
 

@@ -2,8 +2,8 @@ import pygame
 import numpy as np
 
 class Fantasma():
-    def __init__(self):
-        self.pos = np.array([350, 100], dtype=float) 
+    def __init__(self, pos_inicial):
+        self.pos = np.array(pos_inicial, dtype=float) 
         self.massa = 90000 
         self.raio_influencia = 200
         self.imagem = pygame.transform.scale(pygame.image.load('assets/fantasma.png'), (70, 70))
