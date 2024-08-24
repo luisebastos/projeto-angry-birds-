@@ -36,9 +36,10 @@ class Personagem():
             if self.pos not in self.s0: 
                 self.v = self.v + self.gravidade
             self.pos += self.v * dt * 2
+        personagem_width, personagem_height = self.imagem.get_size()
         screen_width, screen_height = 900, 500  
-        if (self.pos[0] < 0 or self.pos[0] > screen_width or
-            self.pos[1] < 0 or self.pos[1] > screen_height):
+        if (self.pos[0] + personagem_width < 0 or self.pos[0] > screen_width or
+            self.pos[1] + personagem_height< 0 or self.pos[1] > screen_height):
             self.reset_pos()
 
 
