@@ -39,14 +39,11 @@ class Game:
             self._draw()
             
             
-    def verifica_vitoria(self):
+    def verifica_vitoria_perda(self):
+        if self.tentativas > 10:
+            self.telas.estado_atual = "gameover"
         if self.personagens_coletados == self.personagens_totais:
             self.telas.estado_atual = "venceu"
-    
-    
-    def verifica_perda(self):
-        if self.tentativas > 6:
-            self.telas.estado_atual = "gameover"
 
 
     def _handle_events(self):
@@ -56,6 +53,9 @@ class Game:
             self.telas.handle_event(event) 
             if self.telas.estado_atual == "jogo":
                 self.personagem.handle_event(event)
+                if event.type == pygame.MOUSEBUTTONUP:
+                    self.tentativas += 1
+                    self.verifica_vitoria_perda()
 
 
     def _update(self, dt):       
@@ -65,10 +65,8 @@ class Game:
             self.personagem.update(dt)
             if self.colisao.verificar_colisao(self.personagem.imagem.get_rect(topleft=self.personagem.pos)):
                 self.personagens_coletados += 1
-                self.verifica_vitoria()
+                self.verifica_vitoria_perda()
                 self.personagem.trocabird()
-                self.tentativas += 1
-                self.verifica_perda()
 
 
     def _draw(self):
