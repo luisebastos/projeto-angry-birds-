@@ -1,9 +1,9 @@
 import pygame
 import pygame.mixer 
-from disney_escape.personagem import *
-from disney_escape.fantasma import * 
-from disney_escape.colisao import * 
-from disney_escape.telas import *
+from personagem import *
+from fantasma import * 
+from colisao import * 
+from telas import *
 
 class Game:
     def __init__(self, width=900, height=500):
