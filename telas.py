@@ -23,11 +23,7 @@ class Telas:
             elif self.estado_atual == "instrucao":
                 if self.clicar_back_instrucoes.collidepoint(event.pos): 
                     self.estado_atual = "inicio"
-            elif self.estado_atual == "venceu":
-                if self.botao_jogar_novamente.collidepoint(event.pos): 
-                    self.estado_atual = "jogo"
             
-
 
     def draw(self, window): 
         if self.estado_atual == "inicio":

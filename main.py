@@ -29,6 +29,7 @@ class Game:
         pygame.mixer.music.load('musica/som.mp3')
         pygame.mixer.music.play(-1)
         
+        
     def run(self):
         self.iniciar_musica()
         while self.running:
@@ -37,13 +38,16 @@ class Game:
             self._update(dt)
             self._draw()
             
+            
     def verifica_vitoria(self):
         if self.personagens_coletados == self.personagens_totais:
             self.telas.estado_atual = "venceu"
     
+    
     def verifica_perda(self):
         if self.tentativas > 6:
             self.telas.estado_atual = "gameover"
+
 
     def _handle_events(self):
         for event in pygame.event.get():
@@ -52,6 +56,7 @@ class Game:
             self.telas.handle_event(event) 
             if self.telas.estado_atual == "jogo":
                 self.personagem.handle_event(event)
+
 
     def _update(self, dt):       
         if self.telas.estado_atual == "jogo":
@@ -64,6 +69,7 @@ class Game:
                 self.personagem.trocabird()
                 self.tentativas += 1
                 self.verifica_perda()
+
 
     def _draw(self):
         self.screen.fill((255, 255, 255))

@@ -9,8 +9,8 @@ class Personagem():
             pygame.transform.scale(pygame.image.load('assets/preto_angry.png'), (55, 77)),
             pygame.transform.scale(pygame.image.load('assets/rosa_angry.png'), (65, 70)),
             pygame.transform.scale(pygame.image.load('assets/vermelho_angry.png'), (45, 60)),]
+        
         self.angry_atual_index = 0 
-
         self.s0 = np.array([50, 370], dtype=float)
         self.pos = self.s0.copy()
         self.imagem = self.angry_bird[self.angry_atual_index]
@@ -49,6 +49,7 @@ class Personagem():
         if (self.pos[0] + personagem_width < 0 or self.pos[0] > screen_width or
             self.pos[1] + personagem_height< 0 or self.pos[1] > screen_height):
             self.trocabird()
+    
     
     def trocabird(self):
         self.angry_atual_index += 1
