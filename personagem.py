@@ -27,16 +27,30 @@ class Personagem():
         return np.array([0, 0])
 
 
+    # def handle_event(self, event):
+    #     if event.type == pygame.MOUSEBUTTONDOWN:
+    #         self.dragging = True
+    #         self.initial_pos = np.array(pygame.mouse.get_pos(), dtype=float)
+    #     elif event.type == pygame.MOUSEBUTTONUP:
+    #         if self.dragging:
+    #             final_pos = np.array(pygame.mouse.get_pos(), dtype=float)
+    #             vf = self.initial_pos - final_pos
+    #             self.v = self.normaliza(vf, 250)  
+    #         self.dragging = False
+    
     def handle_event(self, event):
+        personagem_rect = self.imagem.get_rect(topleft=self.pos)
         if event.type == pygame.MOUSEBUTTONDOWN:
-            self.dragging = True
-            self.initial_pos = np.array(pygame.mouse.get_pos(), dtype=float)
+            if personagem_rect.collidepoint(event.pos):
+                self.dragging = True
+                self.initial_pos = np.array(pygame.mouse.get_pos(), dtype=float)
         elif event.type == pygame.MOUSEBUTTONUP:
             if self.dragging:
                 final_pos = np.array(pygame.mouse.get_pos(), dtype=float)
                 vf = self.initial_pos - final_pos
                 self.v = self.normaliza(vf, 250)  
             self.dragging = False
+    
     
     
     def update(self, dt):
