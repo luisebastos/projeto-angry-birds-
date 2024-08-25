@@ -21,8 +21,9 @@ class Game:
 
         self.personagens_coletados = 0 
         self.personagens_totais = 6
+        self.tentativas = -1
 
-        self.tentativas = 0 
+        self.font = pygame.font.Font(None, 36)
 
 
     def iniciar_musica(self):
@@ -77,6 +78,9 @@ class Game:
             self.colisao.desenhar(self.screen)
             self.fantasma1.desenha_corpo(self.screen)
             self.fantasma2.desenha_corpo(self.screen)
+            
+            tentativas_texto = self.font.render(f"Tentativas: {self.tentativas}/10", True, (0, 0, 0))
+            self.screen.blit(tentativas_texto, (700, 10))  
         pygame.display.flip()
 
 
