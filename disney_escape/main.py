@@ -87,8 +87,12 @@ class Game:
     def quit(self):
         pygame.quit()
 
-
-if __name__ == "__main__":
+def main():
     game = Game()
     game.run()
     game.quit()
+
+if __name__ == "__main__":
+    main()
+    
+    
