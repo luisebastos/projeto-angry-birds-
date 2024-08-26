@@ -8,7 +8,7 @@ from telas import *
 class Game:
     def __init__(self, width=900, height=500):
         pygame.init()
-        pygame.mixer.init()
+        # pygame.mixer.init()
         pygame.display.set_caption("Angry Birds")
         self.screen = pygame.display.set_mode((width, height))
         self.clock = pygame.time.Clock()
