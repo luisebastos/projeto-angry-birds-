@@ -5,7 +5,7 @@ setup(
     version="0.1.0",  # Versão do pacote
     packages=find_packages(),  # Encontrar automaticamente todos os pacotes
     install_requires=[  # Dependências
-        # Liste aqui outras bibliotecas que seu pacote precisa
+        "pygame", "numpy"
     ],
     package_data={
         '': ['assets/*.png','disney_escape/assets/*.png',]  # Inclui todos os arquivos .png dentro do diretório 'img' de todos os pacotes
