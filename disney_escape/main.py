@@ -4,6 +4,7 @@ from disney_escape.personagem import *
 from disney_escape.fantasma import * 
 from disney_escape.colisao import * 
 from disney_escape.telas import *
+import os 
 
 class Game:
     def __init__(self, width=900, height=500):
@@ -27,7 +28,9 @@ class Game:
 
 
     def iniciar_musica(self):
-        pygame.mixer.music.load('musica/som.mp3')
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        musica = os.path.join(base_path, 'muscia', 'som.mp3')
+        pygame.mixer.music.load(musica)
         pygame.mixer.music.play(-1)
         
         
