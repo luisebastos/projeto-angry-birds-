@@ -1,5 +1,5 @@
 import pygame
-# import pygame.mixer 
+import pygame.mixer 
 from disney_escape.personagem import *
 from disney_escape.fantasma import * 
 from disney_escape.colisao import * 
@@ -8,7 +8,7 @@ from disney_escape.telas import *
 class Game:
     def __init__(self, width=900, height=500):
         pygame.init()
-        # pygame.mixer.init()
+        pygame.mixer.init()
         pygame.display.set_caption("Angry Birds")
         self.screen = pygame.display.set_mode((width, height))
         self.clock = pygame.time.Clock()
@@ -26,13 +26,13 @@ class Game:
         self.font = pygame.font.Font(None, 36)
 
 
-    # def iniciar_musica(self):
-    #     pygame.mixer.music.load('musica/som.mp3')
-    #     pygame.mixer.music.play(-1)
+    def iniciar_musica(self):
+        pygame.mixer.music.load('musica/som.mp3')
+        pygame.mixer.music.play(-1)
         
         
     def run(self):
-        # self.iniciar_musica()
+        self.iniciar_musica()
         while self.running:
             dt = self.clock.tick(60) / 1000  
             self._handle_events()
