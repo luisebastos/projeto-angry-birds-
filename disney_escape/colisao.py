@@ -3,9 +3,6 @@ import os
 
 class Colisao():
     def __init__(self):
-        self.caixa = pygame.transform.scale(pygame.image.load('assets/caixa angry birds.png'), (85, 85))
-        self.posicoes = [(570, 300), (670, 300), (770, 300), (620, 220), (720, 220), (670, 140)]
-        self.caixas = [self.caixa.get_rect(topleft = pos) for pos in self.posicoes]
         
         base_path = os.path.dirname(os.path.abspath(__file__))
         olaf = os.path.join(base_path, 'assets', 'olaf.png')
@@ -14,6 +11,11 @@ class Colisao():
         pooh = os.path.join(base_path, 'assets', 'pooh.png')
         moana_pig = os.path.join(base_path, 'assets', 'moana_pig.png')
         boo = os.path.join(base_path, 'assets', 'boo.png')
+        caixa = os.path.join(base_path, 'assets', 'caixa angry birds.png')
+        
+        self.caixa = pygame.transform.scale(pygame.image.load(caixa), (85, 85))
+        self.posicoes = [(570, 300), (670, 300), (770, 300), (620, 220), (720, 220), (670, 140)]
+        self.caixas = [self.caixa.get_rect(topleft = pos) for pos in self.posicoes]
         
         self.personagens = [
             {'imagem': pygame.transform.scale(pygame.image.load(olaf), (60, 70)), 'pos': (580, 300)},

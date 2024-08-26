@@ -8,7 +8,7 @@ setup(
         "pygame", "numpy"
     ],
     package_data={
-        '': ['disney_escape/assets/*.png','disney_escape/assets/*.png',]  # Inclui todos os arquivos .png dentro do diretório 'img' de todos os pacotes
+        '': ['assets/*.png','disney_escape/assets/*.png',]  # Inclui todos os arquivos .png dentro do diretório 'img' de todos os pacotes
     },
     entry_points={
         "console_scripts": [
