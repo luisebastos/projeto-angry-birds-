@@ -12,7 +12,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "disney_escape=main:main",  # Se quiser criar um comando de terminal
+            "disney_escape=disney_escape.main:main",  # Se quiser criar um comando de terminal
         ],
     },
     author="Luise e Manuela",  # Seu nome
