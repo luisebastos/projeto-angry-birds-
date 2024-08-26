@@ -1,12 +1,16 @@
 import pygame
 import numpy as np
+import os
 
 class Fantasma():
     def __init__(self, pos_inicial):
         self.pos = np.array(pos_inicial, dtype=float) 
         self.massa = 90000 
         self.raio_influencia = 200
-        self.imagem = pygame.transform.scale(pygame.image.load('assets/fantasma.png'), (70, 70))
+        
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        fantasma = os.path.join(base_path, 'assets', 'fantasma.png')
+        self.imagem = pygame.transform.scale(pygame.image.load(fantasma), (70, 70))
     
     
     def atualiza_aceleracao(self, personagem):

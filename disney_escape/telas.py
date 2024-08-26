@@ -1,12 +1,21 @@
 import pygame 
+import os
 
 class Telas: 
     def __init__(self, width=900, height=500): 
-        self.tela_inicial = pygame.transform.scale(pygame.image.load('assets/menu.png'), (width, height))
-        self.tela_instrucoes = pygame.transform.scale(pygame.image.load('assets/instrucoes.png'), (width, height))
-        self.tela_venceu = pygame.transform.scale(pygame.image.load('assets/venceu.png'), (width, height))
-        self.tela_gameover = pygame.transform.scale(pygame.image.load('assets/gameover.png'), (width, height))
-        self.tela_jogo = pygame.transform.scale(pygame.image.load('assets/jogo_inicio.png'), (width, height))
+        
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        menu = os.path.join(base_path, 'assets', 'menu.png')
+        instrucoes = os.path.join(base_path, 'assets', 'instrucoes.png')
+        venceu = os.path.join(base_path, 'assets', 'venceu.png')
+        gameover = os.path.join(base_path, 'assets', 'gameover.png')
+        jogo_inicio = os.path.join(base_path, 'assets', 'jogo_inicio.png')
+        
+        self.tela_inicial = pygame.transform.scale(pygame.image.load(menu), (width, height))
+        self.tela_instrucoes = pygame.transform.scale(pygame.image.load(instrucoes), (width, height))
+        self.tela_venceu = pygame.transform.scale(pygame.image.load(venceu), (width, height))
+        self.tela_gameover = pygame.transform.scale(pygame.image.load(gameover), (width, height))
+        self.tela_jogo = pygame.transform.scale(pygame.image.load(jogo_inicio), (width, height))
         self.botao_jogar = pygame.Rect(150, height - 150, 120, 120)
         self.botao_instrucoes = pygame.Rect(550, height - 150, 150, 150)
         self.clicar_back_instrucoes = pygame.Rect(100, height - 150, 120, 120)

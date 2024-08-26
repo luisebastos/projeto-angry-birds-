@@ -1,17 +1,27 @@
 import pygame 
+import os
 
 class Colisao():
     def __init__(self):
         self.caixa = pygame.transform.scale(pygame.image.load('assets/caixa angry birds.png'), (85, 85))
         self.posicoes = [(570, 300), (670, 300), (770, 300), (620, 220), (720, 220), (670, 140)]
         self.caixas = [self.caixa.get_rect(topleft = pos) for pos in self.posicoes]
+        
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        olaf = os.path.join(base_path, 'assets', 'olaf.png')
+        dumbo = os.path.join(base_path, 'assets', 'dumbo.png')
+        stitch = os.path.join(base_path, 'assets', 'stitch.png')
+        pooh = os.path.join(base_path, 'assets', 'pooh.png')
+        moana_pig = os.path.join(base_path, 'assets', 'moana_pig.png')
+        boo = os.path.join(base_path, 'assets', 'boo.png')
+        
         self.personagens = [
-            {'imagem': pygame.transform.scale(pygame.image.load('assets/olaf.png'), (60, 70)), 'pos': (580, 300)},
-            {'imagem': pygame.transform.scale(pygame.image.load('assets/dumbo.png'), (55, 60)), 'pos': (690, 310)},
-            {'imagem': pygame.transform.scale(pygame.image.load('assets/stitch.png'), (60, 70)), 'pos': (780, 310)},
-            {'imagem': pygame.transform.scale(pygame.image.load('assets/pooh.png'), (50, 55)), 'pos': (635, 235)},
-            {'imagem': pygame.transform.scale(pygame.image.load('assets/moana_pig.png'), (60, 70)), 'pos': (740, 225)},
-            {'imagem': pygame.transform.scale(pygame.image.load('assets/boo.png'), (60, 70)), 'pos': (680, 150)}
+            {'imagem': pygame.transform.scale(pygame.image.load(olaf), (60, 70)), 'pos': (580, 300)},
+            {'imagem': pygame.transform.scale(pygame.image.load(dumbo), (55, 60)), 'pos': (690, 310)},
+            {'imagem': pygame.transform.scale(pygame.image.load(stitch), (60, 70)), 'pos': (780, 310)},
+            {'imagem': pygame.transform.scale(pygame.image.load(pooh), (50, 55)), 'pos': (635, 235)},
+            {'imagem': pygame.transform.scale(pygame.image.load(moana_pig), (60, 70)), 'pos': (740, 225)},
+            {'imagem': pygame.transform.scale(pygame.image.load(boo), (60, 70)), 'pos': (680, 150)}
         ]
         self.caixas = [self.caixa.get_rect(topleft=pos) for pos in self.posicoes]
         self.personagem_rects = [pygame.Rect(personagem['pos'], (50, 70)) for personagem in self.personagens]

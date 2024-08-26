@@ -1,14 +1,24 @@
 import pygame
 import numpy as np
+import os 
 
 class Personagem():
     def __init__(self):
-        self.angry_bird = [pygame.transform.scale(pygame.image.load('assets/amarelo_angry.png'), (45, 65)),
-            pygame.transform.scale(pygame.image.load('assets/azul_angry.png'), (60, 70)),
-            pygame.transform.scale(pygame.image.load('assets/branco_angry.png'), (55, 77)),
-            pygame.transform.scale(pygame.image.load('assets/preto_angry.png'), (55, 77)),
-            pygame.transform.scale(pygame.image.load('assets/rosa_angry.png'), (65, 70)),
-            pygame.transform.scale(pygame.image.load('assets/vermelho_angry.png'), (45, 60)),]
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        amarelo_path = os.path.join(base_path, 'assets', 'amarelo_angry.png')
+        azul_path = os.path.join(base_path, 'assets', 'azul_angry.png')
+        branco_path = os.path.join(base_path, 'assets', 'branco_angry.png')
+        preto_path = os.path.join(base_path, 'assets', 'preto_angry.png')
+        rosa_path = os.path.join(base_path, 'assets', 'rosa_angry.png')
+        vermelho_path = os.path.join(base_path, 'assets', 'vermelho_angry.png')
+        
+        
+        self.angry_bird = [pygame.transform.scale(pygame.image.load(amarelo_path), (45, 65)),
+            pygame.transform.scale(pygame.image.load(azul_path), (60, 70)),
+            pygame.transform.scale(pygame.image.load(branco_path), (55, 77)),
+            pygame.transform.scale(pygame.image.load(preto_path), (55, 77)),
+            pygame.transform.scale(pygame.image.load(rosa_path), (65, 70)),
+            pygame.transform.scale(pygame.image.load(vermelho_path), (45, 60)),]
         
         self.angry_atual_index = 0 
         self.s0 = np.array([50, 370], dtype=float)
