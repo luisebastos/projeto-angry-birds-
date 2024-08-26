@@ -1,5 +1,5 @@
 import pygame
-import pygame.mixer 
+# import pygame.mixer 
 from personagem import *
 from fantasma import * 
 from colisao import * 
@@ -26,13 +26,13 @@ class Game:
         self.font = pygame.font.Font(None, 36)
 
 
-    def iniciar_musica(self):
-        pygame.mixer.music.load('musica/som.mp3')
-        pygame.mixer.music.play(-1)
+    # def iniciar_musica(self):
+    #     pygame.mixer.music.load('musica/som.mp3')
+    #     pygame.mixer.music.play(-1)
         
         
     def run(self):
-        self.iniciar_musica()
+        # self.iniciar_musica()
         while self.running:
             dt = self.clock.tick(60) / 1000  
             self._handle_events()
