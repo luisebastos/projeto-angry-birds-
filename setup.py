@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="disney_escape-",  # Nome do pacote
+    name="disney_escape",  # Nome do pacote
     version="0.1.0",  # Versão do pacote
     packages=find_packages(),  # Encontrar automaticamente todos os pacotes
     install_requires=[  # Dependências
@@ -12,7 +12,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "disney_escape-=disney_escape.main:main",  # Se quiser criar um comando de terminal
+            "disney_escape=disney_escape.main:main",  # Se quiser criar um comando de terminal
         ],
     },
     author="Luise e Manuela",  # Seu nome
